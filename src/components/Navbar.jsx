@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 
@@ -47,9 +47,9 @@ const Navbar = ({ openModal, onGenreSelect, searchQuery, onSearch }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white px-0" style={{ borderBottom: "1px solid #dee2e6" }}>
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold text-dark" href="/" style={{ fontFamily: "serif", fontSize: "1.5rem" }}>
+        <Link className="navbar-brand fw-bold text-dark" to="/" style={{ fontFamily: "serif", fontSize: "1.5rem" }}>
           NovelWeb
-        </a>
+        </Link>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
           <span className="navbar-toggler-icon"></span>
@@ -58,9 +58,12 @@ const Navbar = ({ openModal, onGenreSelect, searchQuery, onSearch }) => {
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-3">
             <li className="nav-item">
-              <a className={`nav-link fw-semibold d-flex align-items-center gap-1 ${location.pathname === "/" ? "active text-primary" : ""}`} href="/">
+              <Link
+                className={`nav-link fw-semibold d-flex align-items-center gap-1 ${location.pathname === "/" ? "active text-primary" : ""}`}
+                to="/"
+              >
                 <i className="bi bi-house-door"></i> Home
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item dropdown position-static" ref={genreRef}>
