@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NovelCard from "./NovelCard";
 
 const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
-  const basePath = "/Project"; // GitHub Pages base path
+  const basePath = "/Project"; 
 
   const rawNovels = [
        {
@@ -47,8 +47,8 @@ const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
       genre: "Adventure fiction",
       rating: 3.8,
       chapters: 34,
-      cover: "covers/three_ man_in_a_boat.webp",
-      pdfLink: "pdfs/three_ man_in_a_boat.pdf",
+      cover: "covers/three_man_in_a_boat.webp",
+      pdfLink: "pdfs/three_man_in_a_boat.pdf",
     },
     {
       title: "Right ho Jeeves",
