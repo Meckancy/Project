@@ -11,8 +11,8 @@ const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
       genre: "Adventure ,Philosophical fiction",
       rating: 4.5,
       chapters: 100,
-      cover: `${basePath}/covers/life_of_pi.jpg`,
-      pdfLink: `${basePath}/pdfs/life_of_pi.pdf`,
+      cover: "/Project/covers/life_of_pi.jpg",
+      pdfLink: "/Project/pdfs/life_of_pi.pdf",
     },
     {
       title: "The Call of the Wild",
