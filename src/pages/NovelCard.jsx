@@ -12,15 +12,12 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
     <div className="card novel-card shadow-sm">
       <img
         src={cover}
-        alt={`Cover of ${title}`}
         className="card-img-top"
+        alt={`Cover of ${title}`}
+        onError={(e) => (e.target.src = "/covers/default.jpg")}
         loading="lazy"
-        onError={(e) => {
-          e.target.src = "/Project/covers/default.jpg"; // fallback image
-        }}
         style={{ height: "250px", objectFit: "cover" }}
       />
-
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
 
@@ -43,7 +40,7 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
           </a>
           <a
             href={pdfLink}
-            download
+            download={pdfLink.split("/").pop()}
             className="btn btn-sm btn-outline-secondary"
           >
             Download
