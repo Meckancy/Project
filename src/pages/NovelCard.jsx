@@ -2,9 +2,6 @@ import React from "react";
 import "./NovelCard.css";
 
 const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) => {
-  const resolvedCover = `${import.meta.env.BASE_URL}${cover.startsWith("/") ? cover.slice(1) : cover}`;
-  const resolvedPdf = `${import.meta.env.BASE_URL}${pdfLink.startsWith("/") ? pdfLink.slice(1) : pdfLink}`;
-
   const renderStars = () => {
     const fullStars = Math.floor(rating);
     const emptyStars = 5 - fullStars;
@@ -14,12 +11,12 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
   return (
     <div className="card novel-card shadow-sm">
       <img
-        src={resolvedCover}
+        src={cover}
         alt={`Cover of ${title}`}
         className="card-img-top"
         loading="lazy"
         onError={(e) => {
-          e.target.src = `${import.meta.env.BASE_URL}covers/default.jpg`;
+          e.target.src = "/Project/covers/default.jpg"; // fallback image
         }}
         style={{ height: "250px", objectFit: "cover" }}
       />
@@ -37,7 +34,7 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
 
         <div className="mt-auto d-flex gap-2">
           <a
-            href={resolvedPdf}
+            href={pdfLink}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-sm btn-primary"
@@ -45,7 +42,7 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
             Read PDF
           </a>
           <a
-            href={resolvedPdf}
+            href={pdfLink}
             download
             className="btn btn-sm btn-outline-secondary"
           >
