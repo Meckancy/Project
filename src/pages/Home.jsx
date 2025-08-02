@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import NovelCard from "./NovelCard";
 
-const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
-  const basePath = "/Project"; 
+const basePath = "/Project";
 
-  const rawNovels = [
-       {
+const rawNovels = [
+  {
       title: "Life of Pi",
       author: "Yann Martel",
       genre: "Adventure ,Philosophical fiction",
@@ -247,15 +246,16 @@ const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
       cover: "covers/phantom.jpg",
       pdfLink: "pdfs/phantom.pdf",
     },
-  ];
+];
 
-  // Prepend basePath to every cover and pdfLink
-  const allNovels = rawNovels.map((novel) => ({
-    ...novel,
-    cover: `${basePath}/${novel.cover}`,
-    pdfLink: `${basePath}/${novel.pdfLink}`,
-  }));
+// Apply basePath prefix
+const allNovels = rawNovels.map((novel) => ({
+  ...novel,
+  cover: `${basePath}/${novel.cover}`,
+  pdfLink: `${basePath}/${novel.pdfLink}`,
+}));
 
+const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
   const [filteredNovels, setFilteredNovels] = useState(allNovels);
 
   const normalize = (text) =>
@@ -300,13 +300,7 @@ const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
         </div>
       </div>
 
-      <footer
-        className="text-center text-muted py-3"
-        style={{
-          borderTop: "1px solid #dee2e6",
-          backgroundColor: "#ffffff",
-        }}
-      >
+      <footer className="text-center text-muted py-3" style={{ borderTop: "1px solid #dee2e6" }}>
         © {new Date().getFullYear()} Novel Library. All rights reserved.
       </footer>
     </div>
