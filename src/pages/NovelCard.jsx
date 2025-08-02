@@ -2,8 +2,8 @@ import React from "react";
 import "./NovelCard.css";
 
 const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) => {
-  const resolvedCover = `${import.meta.env.BASE_URL}${cover}`;
-  const resolvedPdf = `${import.meta.env.BASE_URL}${pdfLink}`;
+  const resolvedCover = `${import.meta.env.BASE_URL}${cover.startsWith("/") ? cover.slice(1) : cover}`;
+  const resolvedPdf = `${import.meta.env.BASE_URL}${pdfLink.startsWith("/") ? pdfLink.slice(1) : pdfLink}`;
 
   const renderStars = () => {
     const fullStars = Math.floor(rating);
@@ -15,12 +15,15 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
     <div className="card novel-card shadow-sm">
       <img
         src={resolvedCover}
-        className="card-img-top"
         alt={`Cover of ${title}`}
-        onError={(e) => (e.target.src = `${import.meta.env.BASE_URL}covers/default.jpg`)}
+        className="card-img-top"
         loading="lazy"
+        onError={(e) => {
+          e.target.src = `${import.meta.env.BASE_URL}covers/default.jpg`;
+        }}
         style={{ height: "250px", objectFit: "cover" }}
       />
+
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
 
