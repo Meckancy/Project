@@ -49,103 +49,114 @@ const Navbar = ({ openModal, onGenreSelect, searchQuery, onSearch }) => {
       className={`navbar navbar-expand-lg px-2 py-2 ${darkMode ? "navbar-dark" : "navbar-light"}`}
       style={{
         background: darkMode ? "#1c1c28" : "linear-gradient(to right, #f8f9fa, #e0e0ff)",
+        borderBottom: "none",
         boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
       }}
     >
-      <div className="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+      <div className="container-fluid">
+        <Link
+          className="navbar-brand fw-bold"
+          to="/"
+          style={{
+            fontFamily: "serif",
+            fontSize: "1.5rem",
+            color: darkMode ? "#fff" : "#000"
+          }}
+        >
+          NovelWeb
+        </Link>
 
-        {/* Left Side: Brand + Discover + Novels */}
-        <div className="d-flex align-items-center gap-3">
-          <Link
-            className="navbar-brand fw-bold"
-            to="/"
-            style={{
-              fontFamily: "serif",
-              fontSize: "1.5rem",
-              color: darkMode ? "#fff" : "#000"
-            }}
-          >
-            NovelWeb
-          </Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <Link
-            className={`nav-link fw-semibold px-2 py-1 rounded ${
-              location.pathname === "/" ? "active text-primary bg-light" : ""
-            }`}
-            to="/"
-            style={{ fontSize: "0.9rem", color: darkMode ? "#ddd" : "#333" }}
-          >
-            Discover
-          </Link>
-
-          <div className="nav-item dropdown position-static" ref={genreRef}>
-            <div
-              className="nav-link btn btn-link dropdown-toggle fw-semibold"
-              style={{
-                fontSize: "0.9rem",
-                textDecoration: "none",
-                color: darkMode ? "#fff" : "#333",
-                background: "none",
-                border: "none",
-                padding: "4px 8px"
-              }}
-              onClick={() => setShowGenres((prev) => !prev)}
-            >
-              Novels
-            </div>
-            {showGenres && (
-              <div
-                className="dropdown-menu show genre-dropdown shadow"
-                style={{
-                  background: darkMode ? "#2a2a40" : "#ffffff",
-                  borderRadius: "8px",
-                  padding: "10px",
-                  zIndex: 999
+        <div className="collapse navbar-collapse" id="navbarContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-2">
+            <li className="nav-item">
+              <Link
+                className={`nav-link fw-semibold px-2 py-1 rounded ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+                to="/"
+                style={{ 
+                  transition: "all 0.2s ease",
+                  color: darkMode ? "#fff" : "#333",
+                  ...(location.pathname === "/" && {
+                    color: darkMode ? "#c9bfff" : "#6f42c1",
+                    backgroundColor: darkMode ? "#2f2f48" : "#f3e9ff",
+                    fontWeight: "600"
+                  })
                 }}
               >
-                <div className="genre-grid">
-                  <a href="#" className="genre-link" onClick={(e) => { e.preventDefault(); handleGenreClick("All"); }}>
-                    All
-                  </a>
-                  {genres.map((genre) => (
-                    <a key={genre} href="#" className="genre-link" onClick={(e) => { e.preventDefault(); handleGenreClick(genre); }}>
-                      {genre}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+                Discover
+              </Link>
+            </li>
 
-        {/* Right Side: Search + Theme + Auth */}
-        <div className="d-flex align-items-center gap-2 flex-wrap">
-          <form className="d-flex align-items-center" onSubmit={(e) => e.preventDefault()}>
+            <li className="nav-item dropdown position-static" ref={genreRef}>
+              <div
+                className="nav-link btn btn-link dropdown-toggle fw-semibold"
+                style={{
+                  textDecoration: "none",
+                  color: darkMode ? "#fff" : "#333",
+                  border: "none",
+                  background: "none",
+                  padding: "6px 10px"
+                }}
+                onClick={() => setShowGenres((prev) => !prev)}
+              >
+                Novels
+              </div>
+              {showGenres && (
+                <div
+                  className="dropdown-menu show genre-dropdown shadow"
+                  style={{
+                    display: "block",
+                    background: darkMode ? "#2a2a40" : "#ffffff",
+                    borderRadius: "8px",
+                    padding: "10px"
+                  }}
+                >
+                  <div className="genre-grid">
+                    <a href="#" className="genre-link" onClick={(e) => { e.preventDefault(); handleGenreClick("All"); }}>
+                      All
+                    </a>
+                    {genres.map((genre) => (
+                      <a key={genre} href="#" className="genre-link" onClick={(e) => { e.preventDefault(); handleGenreClick(genre); }}>
+                        {genre}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </li>
+          </ul>
+
+          <form className="d-flex me-3 align-items-center" onSubmit={(e) => e.preventDefault()}>
             <input
+              className="form-control form-control-sm"
               type="search"
               placeholder="Search books"
-              value={searchQuery}
-              onChange={(e) => onSearch(e.target.value)}
               style={{
+                width: "160px",
+                padding: "4px 8px",
+                fontSize: "0.875rem",
+                borderRadius: "6px",
                 backgroundColor: darkMode ? "#343a40" : "#fff",
                 color: darkMode ? "#fff" : "#000",
-                border: "1px solid #ccc",
-                borderRadius: "6px",
-                fontSize: "0.875rem",
-                padding: "4px 10px",
-                width: "160px"
+                border: "1px solid #ccc"
               }}
+              value={searchQuery}
+              onChange={(e) => onSearch(e.target.value)}
             />
             <button
+              className="btn btn-sm ms-2"
               type="button"
-              className="ms-2"
               style={{
                 background: darkMode ? "#5f5fff" : "linear-gradient(90deg, #6f42c1, #5a5afc)",
                 color: "#fff",
                 border: "none",
-                padding: "4px 10px",
+                padding: "6px 10px",
                 borderRadius: "6px",
-                fontSize: "0.875rem",
                 fontWeight: 600
               }}
             >
@@ -153,70 +164,71 @@ const Navbar = ({ openModal, onGenreSelect, searchQuery, onSearch }) => {
             </button>
           </form>
 
-          <button
-            onClick={toggleTheme}
-            title={darkMode ? "Light Mode" : "Dark Mode"}
-            style={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "50%",
-              backgroundColor: darkMode ? "#2c2f33" : "#e2e6ea",
-              border: "none",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            <i className={`bi ${darkMode ? "bi-sun-fill" : "bi-moon-fill"}`} style={{ color: darkMode ? "#fcd34d" : "#343a40" }}></i>
-          </button>
-
-          {!isLoggedIn ? (
-            <>
-              <button
-                onClick={() => openModal("login")}
-                style={{
-                  color: darkMode ? "#c9bfff" : "#6f42c1",
-                  border: `1px solid ${darkMode ? "#8e79ff" : "#6f42c1"}`,
-                  backgroundColor: "transparent",
-                  padding: "4px 12px",
-                  borderRadius: "6px",
-                  fontSize: "0.875rem",
-                  fontWeight: 500
-                }}
-              >
-                Sign In
-              </button>
-              <button
-                onClick={() => openModal("register")}
-                style={{
-                  background: darkMode ? "#6c5ce7" : "linear-gradient(90deg, #6f42c1, #5a5afc)",
-                  color: "#fff",
-                  border: "none",
-                  padding: "4px 12px",
-                  borderRadius: "6px",
-                  fontSize: "0.875rem",
-                  fontWeight: 500
-                }}
-              >
-                Join
-              </button>
-            </>
-          ) : (
+          <div className="d-flex gap-2 align-items-center">
             <button
-              onClick={handleLogout}
-              className="btn btn-sm fw-semibold"
+              className="btn btn-sm d-flex align-items-center justify-content-center"
+              onClick={toggleTheme}
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               style={{
-                backgroundColor: "#dc3545",
-                color: "#fff",
-                padding: "4px 12px",
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                backgroundColor: darkMode ? "#2c2f33" : "#e2e6ea",
                 border: "none",
-                borderRadius: "6px",
-                fontSize: "0.875rem"
+                transition: "background-color 0.3s ease"
               }}
             >
-              Logout
+              <i
+                className={`bi ${darkMode ? "bi-sun-fill" : "bi-moon-fill"}`}
+                style={{
+                  fontSize: "1.2rem",
+                  color: darkMode ? "#fcd34d" : "#343a40"
+                }}
+              ></i>
             </button>
-          )}
+
+            {!isLoggedIn ? (
+              <>
+                <button
+                  className="btn btn-sm fw-semibold"
+                  onClick={() => openModal("login")}
+                  style={{
+                    color: darkMode ? "#c9bfff" : "#6f42c1",
+                    border: `1px solid ${darkMode ? "#8e79ff" : "#6f42c1"}`,
+                    backgroundColor: "transparent",
+                    padding: "6px 16px",
+                    borderRadius: "6px",
+                    transition: "background-color 0.3s ease"
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.target.style.backgroundColor = darkMode ? "#2f2f48" : "#f3e9ff")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.backgroundColor = "transparent")
+                  }
+                >
+                  Sign In
+                </button>
+                <button
+                  className="btn btn-sm fw-semibold"
+                  onClick={() => openModal("register")}
+                  style={{
+                    background: darkMode ? "#6c5ce7" : "linear-gradient(90deg, #6f42c1, #5a5afc)",
+                    color: "#fff",
+                    border: "none",
+                    padding: "6px 16px",
+                    borderRadius: "6px"
+                  }}
+                >
+                  Join
+                </button>
+              </>
+            ) : (
+              <button className="btn btn-danger btn-sm fw-semibold" onClick={handleLogout}>
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>
