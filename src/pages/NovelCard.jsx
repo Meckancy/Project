@@ -16,29 +16,26 @@ const NovelCard = ({ title, author, genre, rating, chapters, cover, pdfLink }) =
         alt={`Cover of ${title}`}
         onError={(e) => (e.target.src = "/Project/covers/default.jpg")}
         loading="lazy"
-        style={{ height: "250px", objectFit: "cover" }}
       />
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
-        <div className="mb-2 text-warning" style={{ fontSize: "1.1rem" }}>
-          {renderStars()}
-        </div>
-        <p className="card-text mb-1"><strong>Author:</strong> {author}</p>
-        <p className="card-text mb-1"><strong>Genre:</strong> {genre}</p>
-        <p className="card-text mb-3"><strong>Chapters:</strong> {chapters ?? "N/A"}</p>
-        <div className="mt-auto d-flex gap-2">
+        <div className="text-warning">{renderStars()}</div>
+        <p className="card-text"><strong>Author:</strong> {author}</p>
+        <p className="card-text"><strong>Genre:</strong> {genre}</p>
+        <p className="card-text"><strong>Chapters:</strong> {chapters ?? "N/A"}</p>
+        <div className="d-flex gap-2 mt-auto">
           <a
             href={pdfLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-sm btn-primary"
+            className="btn btn-read-pdf"
           >
             Read PDF
           </a>
           <a
             href={pdfLink}
             download={pdfLink.split("/").pop()}
-            className="btn btn-sm btn-outline-secondary"
+            className="btn btn-outline-secondary"
           >
             Download
           </a>

@@ -1,19 +1,53 @@
+/* Navbar Link Styling */
 .nav-link {
   color: #333;
   font-weight: 500;
   text-decoration: none;
+  padding: 4px 8px;
+  font-size: 0.925rem;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-link.active {
   color: #007bff;
+  background-color: #f0f8ff;
+  border-radius: 4px;
 }
 
+/* Navbar Base (No white line below) */
 .navbar {
   margin: 0 !important;
-  box-shadow: none !important;
-  border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  transition: background-color 0.3s ease;
+  /* border-bottom removed */
 }
 
+/* Genre Dropdown Grid */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px 16px;
+  padding: 6px 0;
+  min-width: 240px;
+}
+
+/* Genre Link Styling */
+.genre-link {
+  color: #333;
+  font-size: 0.875rem;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: block;
+}
+
+.genre-link:hover {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+/* Mega Menu Dropdown (if reused elsewhere) */
 .mega-menu {
   width: 100%;
   left: 0;
@@ -22,43 +56,70 @@
   position: absolute;
   background-color: #fff;
   z-index: 1000;
-  border-top: 1px solid #dee2e6;
-  box-shadow: none;
   padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* border-top removed if previously added */
 }
 
+/* Dropdown Items */
 .mega-menu .dropdown-item {
   white-space: nowrap;
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  transition: background-color 0.2s ease-in-out;
   background: none;
   border: none;
   width: 100%;
   text-align: left;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .mega-menu .dropdown-item:hover {
   background-color: #f8f9fa;
   cursor: pointer;
 }
-.genre-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 12px;
+
+/* Optional: Remove default body margin */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.genre-link {
-  color: #333;
-  text-decoration: none;
-  padding: 4px 6px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-  display: block;
+/* ============================================
+   Dark Mode (Solid Color Style)
+============================================ */
+body.dark-mode .navbar {
+  background-color: #121212;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
 
-.genre-link:hover {
-  background-color: #f2f2f2;
-  color: #000;
+body.dark-mode .nav-link {
+  color: #ddd;
+}
+
+body.dark-mode .nav-link.active {
+  color: #80d0ff;
+  background-color: rgba(128, 208, 255, 0.1);
+}
+
+body.dark-mode .genre-link {
+  color: #ccc;
+}
+
+body.dark-mode .genre-link:hover {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark-mode .mega-menu {
+  background-color: #1a1a1a;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dropdown-item {
+  color: #ccc;
+}
+
+body.dark-mode .dropdown-item:hover {
+  background-color: #2a2a2a;
 }

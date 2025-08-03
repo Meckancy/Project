@@ -1,6 +1,8 @@
+/* Light theme default */
 .login-page {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
+
 .modal-content input:focus {
   outline: none;
   box-shadow: none;
@@ -10,4 +12,39 @@
 
 .btn-link:hover {
   text-decoration: underline;
+}
+
+/* Dark mode support */
+body.dark .login-page,
+.dark .login-page {
+  background-color: #1e1e2f;
+}
+
+body.dark .modal-content,
+.dark .modal-content {
+  background-color: #2a2a40;
+  color: #f1f1f1;
+}
+
+body.dark .form-label,
+.dark .form-label {
+  color: #ddd;
+}
+
+body.dark .modal-content input,
+.dark .modal-content input {
+  background-color: #3b3b4f;
+  color: #f1f1f1;
+  border-color: #666;
+}
+
+body.dark .modal-content input:focus,
+.dark .modal-content input:focus {
+  background-color: #444466;
+  border-color: #888;
+}
+
+body.dark .text-muted,
+.dark .text-muted {
+  color: #bbb !important;
 }

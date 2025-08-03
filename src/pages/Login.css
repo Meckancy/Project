@@ -3,11 +3,6 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
-}
-
-.login-page {
-  height: 100vh;
 }
 .modal-backdrop {
   display: none;

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../ThemeContext"; // Adjust the path if needed
 
-function ForgotPassword({ closeModal }) {
+function ForgotPassword({ closeModal, openModal }) {
   const [email, setEmail] = useState("");
+  const { darkMode } = useContext(ThemeContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,8 +15,13 @@ function ForgotPassword({ closeModal }) {
 
   return (
     <div
-      className="bg-white p-4 rounded shadow"
-      style={{ width: "100%", maxWidth: "430px" }}
+      className="p-4 rounded shadow"
+      style={{
+        width: "100%",
+        maxWidth: "430px",
+        backgroundColor: darkMode ? "#2a2a40" : "#ffffff",
+        color: darkMode ? "#f1f1f1" : "#222",
+      }}
     >
       <h2 className="fw-bold mb-2 text-center">Forgot Password?</h2>
       <p className="mb-4 text-muted text-center">
@@ -23,7 +30,7 @@ function ForgotPassword({ closeModal }) {
 
       <form onSubmit={handleSubmit}>
         <div className="mb-3 text-start">
-          <label className="form-label text-dark">
+          <label className="form-label" style={{ color: darkMode ? "#ccc" : "#333" }}>
             Email <span className="text-danger">*</span>
           </label>
           <input
@@ -36,7 +43,8 @@ function ForgotPassword({ closeModal }) {
             style={{
               height: "44px",
               borderRadius: "8px",
-              backgroundColor: "#f2f2f2",
+              backgroundColor: darkMode ? "#3b3b4f" : "#f2f2f2",
+              color: darkMode ? "#fff" : "#000",
               border: "1px solid #ccc",
             }}
           />
@@ -58,11 +66,11 @@ function ForgotPassword({ closeModal }) {
         </button>
       </form>
 
-      <p className="text-center mt-3 text-dark">
+      <p className="text-center mt-3" style={{ color: darkMode ? "#ccc" : "#333" }}>
         Remembered your password?{" "}
         <button
           type="button"
-          onClick={() => closeModal("login")}
+          onClick={() => openModal("login")}
           className="btn btn-link p-0 m-0"
           style={{ color: "#5a5afc", textDecoration: "none" }}
         >

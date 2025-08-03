@@ -301,7 +301,7 @@ const Home = ({ selectedGenre = "All", searchQuery = "" }) => {
       </div>
 
       <footer className="text-center text-muted py-3" style={{ borderTop: "1px solid #dee2e6" }}>
-        © {new Date().getFullYear()} Novel Library. All rights reserved.
+        © {new Date().getFullYear()} NovelWeb. All rights reserved.
       </footer>
     </div>
   );

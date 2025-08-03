@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 import "./Register.css";
 
 function Register({ closeModal, openModal }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { darkMode } = useContext(ThemeContext);
 
   const togglePassword = () => setShowPassword((prev) => !prev);
   const toggleConfirmPassword = () => setShowConfirmPassword((prev) => !prev);
@@ -13,6 +15,26 @@ function Register({ closeModal, openModal }) {
     localStorage.setItem("isLoggedIn", "true");
     closeModal();
   };
+
+  const light = {
+    background: "#fff",
+    text: "#111",
+    muted: "#6c757d",
+    input: "#f8f8f8",
+    border: "#ccc",
+    link: "#5a5afc",
+  };
+
+  const dark = {
+    background: "#2a2a40",
+    text: "#f1f1f1",
+    muted: "#aaa",
+    input: "#3c3c5a",
+    border: "#555",
+    link: "#9a9aff",
+  };
+
+  const theme = darkMode ? dark : light;
 
   return (
     <div
@@ -34,28 +56,31 @@ function Register({ closeModal, openModal }) {
           className="modal-content"
           style={{
             borderRadius: "12px",
-            border: "1px solid #ddd",
+            border: `1px solid ${theme.border}`,
             padding: "24px 20px",
+            backgroundColor: theme.background,
+            color: theme.text,
           }}
         >
           <div className="modal-header border-0 p-0 mb-3">
-            <h5 className="modal-title fw-bold text-dark">Create an Account</h5>
+            <h5 className="modal-title fw-bold">Create an Account</h5>
             <button
               type="button"
               className="btn-close"
               onClick={closeModal}
+              style={{ filter: darkMode ? "invert(1)" : "none" }}
             ></button>
           </div>
 
           <div className="modal-body pt-0 px-0">
-            <p className="text-muted mb-4 text-center small">
+            <p className="mb-4 text-center small" style={{ color: theme.muted }}>
               Join us and start your journey today!
             </p>
 
             <form onSubmit={handleRegister}>
               {/* Full Name */}
               <div className="mb-3 text-start">
-                <label className="form-label text-dark small">
+                <label className="form-label small" style={{ color: theme.text }}>
                   Full Name <span className="text-danger">*</span>
                 </label>
                 <input
@@ -65,8 +90,9 @@ function Register({ closeModal, openModal }) {
                   style={{
                     height: "44px",
                     borderRadius: "8px",
-                    backgroundColor: "#f2f2f2",
-                    border: "1px solid #ccc",
+                    backgroundColor: theme.input,
+                    color: theme.text,
+                    border: `1px solid ${theme.border}`,
                   }}
                   required
                 />
@@ -74,7 +100,7 @@ function Register({ closeModal, openModal }) {
 
               {/* Email */}
               <div className="mb-3 text-start">
-                <label className="form-label text-dark small">
+                <label className="form-label small" style={{ color: theme.text }}>
                   Email <span className="text-danger">*</span>
                 </label>
                 <input
@@ -84,8 +110,9 @@ function Register({ closeModal, openModal }) {
                   style={{
                     height: "44px",
                     borderRadius: "8px",
-                    backgroundColor: "#f2f2f2",
-                    border: "1px solid #ccc",
+                    backgroundColor: theme.input,
+                    color: theme.text,
+                    border: `1px solid ${theme.border}`,
                   }}
                   required
                 />
@@ -93,76 +120,76 @@ function Register({ closeModal, openModal }) {
 
               {/* Password */}
               <div className="mb-3 text-start">
-                <label className="form-label text-dark small">
+                <label className="form-label small" style={{ color: theme.text }}>
                   Password <span className="text-danger">*</span>
                 </label>
                 <div
                   className="position-relative"
                   style={{
                     borderRadius: "8px",
-                    backgroundColor: "#f2f2f2",
-                    border: "1px solid #ccc",
+                    backgroundColor: theme.input,
+                    border: `1px solid ${theme.border}`,
                   }}
                 >
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-control border-0 bg-transparent"
                     placeholder="Create a password"
-                    style={{ height: "44px", paddingRight: "40px" }}
+                    style={{
+                      height: "44px",
+                      paddingRight: "40px",
+                      color: theme.text,
+                    }}
                     required
                   />
                   <span
                     className="position-absolute end-0 top-50 translate-middle-y me-3"
-                    style={{ cursor: "pointer", color: "#666" }}
+                    style={{ cursor: "pointer", color: theme.muted }}
                     onClick={togglePassword}
                   >
-                    <i
-                      className={`bi ${
-                        showPassword ? "bi-eye-slash" : "bi-eye"
-                      }`}
-                    ></i>
+                    <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
                   </span>
                 </div>
               </div>
 
               {/* Confirm Password */}
               <div className="mb-3 text-start">
-                <label className="form-label text-dark small">
+                <label className="form-label small" style={{ color: theme.text }}>
                   Confirm Password <span className="text-danger">*</span>
                 </label>
                 <div
                   className="position-relative"
                   style={{
                     borderRadius: "8px",
-                    backgroundColor: "#f2f2f2",
-                    border: "1px solid #ccc",
+                    backgroundColor: theme.input,
+                    border: `1px solid ${theme.border}`,
                   }}
                 >
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     className="form-control border-0 bg-transparent"
                     placeholder="Confirm your password"
-                    style={{ height: "44px", paddingRight: "40px" }}
+                    style={{
+                      height: "44px",
+                      paddingRight: "40px",
+                      color: theme.text,
+                    }}
                     required
                   />
                   <span
                     className="position-absolute end-0 top-50 translate-middle-y me-3"
-                    style={{ cursor: "pointer", color: "#666" }}
+                    style={{ cursor: "pointer", color: theme.muted }}
                     onClick={toggleConfirmPassword}
                   >
-                    <i
-                      className={`bi ${
-                        showConfirmPassword ? "bi-eye-slash" : "bi-eye"
-                      }`}
-                    ></i>
+                    <i className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
                   </span>
                 </div>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit */}
               <button
                 type="submit"
-                className="btn w-100"
+                className="btn w-100 fw-semibold"
                 style={{
                   background: "linear-gradient(90deg, #6f42c1, #5a5afc)",
                   border: "none",
@@ -170,23 +197,19 @@ function Register({ closeModal, openModal }) {
                   height: "44px",
                   borderRadius: "8px",
                 }}
-                onMouseOver={(e) =>
-                  (e.target.style.backgroundColor = "#4a4ae0")
-                }
-                onMouseOut={(e) => (e.target.style.backgroundColor = "#5a5afc")}
               >
                 Register
               </button>
             </form>
 
             {/* Login Link */}
-            <p className="text-center mt-4 text-dark small">
+            <p className="text-center mt-4 small" style={{ color: theme.text }}>
               Already have an account?{" "}
               <button
                 type="button"
                 onClick={() => openModal("login")}
                 className="btn btn-link p-0 m-0"
-                style={{ color: "#5a5afc", textDecoration: "none" }}
+                style={{ color: theme.link, textDecoration: "none" }}
               >
                 Log In
               </button>
