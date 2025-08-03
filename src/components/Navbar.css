@@ -1,4 +1,6 @@
-/* Navbar Link Styling */
+/* ===============================
+   Navbar Link Styling
+================================= */
 .nav-link {
   color: #333;
   font-weight: 500;
@@ -14,15 +16,18 @@
   border-radius: 4px;
 }
 
-/* Navbar Base (No white line below) */
+/* ===============================
+   Navbar Base (No white line below)
+================================= */
 .navbar {
   margin: 0 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
   transition: background-color 0.3s ease;
-  /* border-bottom removed */
 }
 
-/* Genre Dropdown Grid */
+/* ===============================
+   Genre Dropdown Grid
+================================= */
 .genre-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -47,7 +52,9 @@
   color: #000;
 }
 
-/* Mega Menu Dropdown (if reused elsewhere) */
+/* ===============================
+   Mega Menu Dropdown
+================================= */
 .mega-menu {
   width: 100%;
   left: 0;
@@ -58,7 +65,6 @@
   z-index: 1000;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  /* border-top removed if previously added */
 }
 
 /* Dropdown Items */
@@ -79,15 +85,45 @@
   cursor: pointer;
 }
 
-/* Optional: Remove default body margin */
+/* ===============================
+   Discover Input Styles
+================================= */
+#discover-input {
+  background-color: #f5f5f5;
+  color: #111;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.2s ease;
+}
+
+#discover-input::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+#discover-input:focus {
+  outline: none;
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* ===============================
+   Optional Reset
+================================= */
 body {
   margin: 0;
   padding: 0;
 }
 
-/* ============================================
-   Dark Mode (Solid Color Style)
-============================================ */
+/* ===============================
+   Dark Mode Styling
+================================= */
 body.dark-mode .navbar {
   background-color: #121212;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
@@ -98,8 +134,9 @@ body.dark-mode .nav-link {
 }
 
 body.dark-mode .nav-link.active {
-  color: #80d0ff;
-  background-color: rgba(128, 208, 255, 0.1);
+  color: #fff;
+  background-color: #3a3a4d;
+  border-radius: 4px;
 }
 
 body.dark-mode .genre-link {
@@ -122,4 +159,23 @@ body.dark-mode .dropdown-item {
 
 body.dark-mode .dropdown-item:hover {
   background-color: #2a2a2a;
+}
+
+/* Dark Mode - Discover Input */
+body.dark-mode #discover-input {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+body.dark-mode #discover-input::placeholder {
+  color: #aaa;
+}
+
+body.dark-mode #discover-input:focus {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #80d0ff;
+  box-shadow: 0 0 0 2px rgba(128, 208, 255, 0.25);
+  outline: none;
 }
