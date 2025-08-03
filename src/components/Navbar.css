@@ -1,23 +1,3 @@
-/* Base Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-  transition: background-color 0.3s ease;
-  position: relative;
-  z-index: 100;
-}
-
-/* Navbar Links Container */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 /* Navbar Link Styling */
 .nav-link {
   color: #333;
@@ -34,10 +14,12 @@
   border-radius: 4px;
 }
 
-/* Buttons */
-.nav-buttons {
-  display: flex;
-  gap: 8px;
+/* Navbar Base (No white line below) */
+.navbar {
+  margin: 0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  transition: background-color 0.3s ease;
+  /* border-bottom removed */
 }
 
 /* Genre Dropdown Grid */
@@ -65,7 +47,7 @@
   color: #000;
 }
 
-/* Mega Menu Dropdown */
+/* Mega Menu Dropdown (if reused elsewhere) */
 .mega-menu {
   width: 100%;
   left: 0;
@@ -76,6 +58,7 @@
   z-index: 1000;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* border-top removed if previously added */
 }
 
 /* Dropdown Items */
@@ -94,56 +77,6 @@
 .mega-menu .dropdown-item:hover {
   background-color: #f8f9fa;
   cursor: pointer;
-}
-
-/* Hamburger Menu (Visible on Mobile) */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.hamburger div {
-  width: 22px;
-  height: 2px;
-  background-color: #333;
-  transition: all 0.3s ease;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-    gap: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-
-  .nav-links.menu-open {
-    display: flex;
-  }
-
-  .nav-buttons {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .nav-link,
-  .genre-link {
-    width: 100%;
-    text-align: left;
-  }
 }
 
 /* Optional: Remove default body margin */
