@@ -1,4 +1,3 @@
-/* Light theme default */
 .login-page {
   background-color: #f8f9fa;
 }
@@ -14,7 +13,6 @@
   text-decoration: underline;
 }
 
-/* Dark mode support */
 body.dark .login-page,
 .dark .login-page {
   background-color: #1e1e2f;

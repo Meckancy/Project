@@ -4,7 +4,8 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    background-color 0.3s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
@@ -94,10 +95,6 @@
   margin-top: auto;
   gap: 6px;
 }
-
-/* ============================= */
-/* Dark Theme Overrides Below */
-/* ============================= */
 
 body.dark-theme .novel-card {
   background-color: #1e1e1e;

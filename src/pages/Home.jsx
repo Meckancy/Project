@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NovelCard from "./NovelCard";
 
-const basePath = "/Project";
+const basePath = "/novel";
 
 const rawNovels = [
   {
@@ -248,7 +248,6 @@ const rawNovels = [
     },
 ];
 
-// Apply basePath prefix
 const allNovels = rawNovels.map((novel) => ({
   ...novel,
   cover: `${basePath}/${novel.cover}`,

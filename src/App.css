@@ -1,11 +1,9 @@
-/* Base Reset */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
   transition: background-color 0.3s, color 0.3s;
 }
-
-/* Light Theme */
 body.light-theme {
   background-color: #ffffff;
   color: #000000;
@@ -24,7 +22,6 @@ body.light-theme .genre-link {
   color: #000;
 }
 
-/* Dark Theme */
 body.dark-theme {
   background-color: #121212;
   color: #ffffff;
@@ -73,7 +70,6 @@ body.dark-theme .btn-light {
   color: #000;
 }
 
-/* Reusable Styling */
 .genre-link {
   display: block;
   padding: 6px 12px;
