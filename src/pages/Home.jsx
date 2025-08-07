@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NovelCard from "./NovelCard";
 
-const basePath = "/novel";
+const basePath = "/NovelWeb";
 
 const rawNovels = [
   {

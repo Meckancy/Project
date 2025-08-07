@@ -2,7 +2,7 @@
   "name": "project-novel",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://meckancy.github.io/novel",
+  "homepage": "https://meckancy.github.io/NovelWeb",
   "type": "module",
   "scripts": {
     "dev": "vite",
